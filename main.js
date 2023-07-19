@@ -32,7 +32,7 @@ var formular;
         show.textContent = ""; // Clear the alert message
         show.style.display = 'none';
         odoslat_button.style.opacity = '1';
-
+        formular.style.display = 'flex';
       }
     }, 1000);
   }
