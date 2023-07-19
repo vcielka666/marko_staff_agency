@@ -3,10 +3,12 @@
 
 var show;
 var odoslat_button;
+var formular;
 
   document.addEventListener('DOMContentLoaded', function() {
     show = document.querySelector('.alert');
     odoslat_button = document.querySelector('#submit_button');
+    formular = document.querySelector('.modal');
     // Rest of your code using the 'show' variable...
 });
 
@@ -22,6 +24,7 @@ var odoslat_button;
       show.textContent = "ZASLAT DALŠÍ FORMULÁŘ MOŽNY ZA " + counter + " VTEŘIN ";
       odoslat_button.style.opacity = '0.3';
       counter--;
+      formular.style.display = 'none';
 
       if (counter < 0) {
         clearInterval(interval);
@@ -29,7 +32,6 @@ var odoslat_button;
         show.textContent = ""; // Clear the alert message
         show.style.display = 'none';
         odoslat_button.style.opacity = '1';
-
 
       }
     }, 1000);

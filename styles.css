@@ -470,7 +470,8 @@ align-items: center;
   padding: 5px;
   margin: 4px;
   position: absolute;
-  top: 60%;
+  top: 50%;
+  transform: translateX(-50%);
   left: 50%;
   transform: translate(-50%);
 
