@@ -240,16 +240,16 @@
    <div class="modal_form_background">
     <div class="modal">
         <p>Zašlite nám prosím vyplněnej formulář a my se Vám brzy ozveme !</p>
-        <form>
+        <form action="submit_form.php" method="post" id="myForm" onsubmit="submitForm(event)">
            <input name="name" id="name" type="text" required placeholder="Meno a priezvisko*">
            <input name="email" id="email" type="email"  placeholder="E-mail">
            <input name="phone" id="phone" type="number" required placeholder="Telefón*">
-           <select>
-            <option value="option1">nástup od:</option>
-            <option value="option2">Hned</option>
-            <option value="option3">Dohodou</option>
+           <select name="nastup">
+            <option value="???nezvolil">nástup od:</option>
+            <option value="Hned">Hned</option>
+            <option value="Dohodou">Dohodou</option>
            </select>
-          <select>
+          <select name="position">
             <option value="position">Pozici...</option>
             <option value="autolakyrnik">Autolakýrník</option>
             <option value="asistent">Asistent pro péči o seniory</option>
@@ -273,12 +273,14 @@
           </select>
 
         </form>
-        <button type="submit" id="submit_button"><img src="images/send.png">Odeslat</button>
+        <button onclick="submitForm(event)" type="submit" id="submit_button"><img src="images/send.png">Odeslat</button>
         <div class="close_modal"></div>
+       
     </div>
-
+    <div class="alert" id="alertMessage"></div>
    </div>
-
+   
+    
    
 
         <div class="kontakt"><span>Kontaktujte nás:</span>

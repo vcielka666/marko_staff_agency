@@ -1,3 +1,76 @@
+  // // SUBMIT FORM AJAX FUNCTION..TO STAY ON THE PAGE
+
+
+var show;
+var odoslat_button;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    show = document.querySelector('.alert');
+    odoslat_button = document.querySelector('#submit_button');
+    // Rest of your code using the 'show' variable...
+});
+
+
+  var isCooldown = false; // Flag to check if the form is on cooldown
+  var cooldownTime = 30; // Cooldown time in seconds
+
+  function startCooldown() {
+    isCooldown = true;
+    var counter = cooldownTime;
+
+    var interval = setInterval(function () {
+      show.textContent = "ZASLAT DALŠÍ FORMULÁŘ MOŽNY ZA " + counter + " VTEŘIN ";
+      odoslat_button.style.opacity = '0.3';
+      counter--;
+
+      if (counter < 0) {
+        clearInterval(interval);
+        isCooldown = false;
+        show.textContent = ""; // Clear the alert message
+        show.style.display = 'none';
+        odoslat_button.style.opacity = '1';
+
+
+      }
+    }, 1000);
+  }
+
+  function submitForm(event) {
+    event.preventDefault(); // Prevent the default form submission
+    if (isCooldown) {
+      // Form is on cooldown, don't submit again
+      return;
+    }
+
+    console.log("Form submission started...");
+    show.style.display = 'flex';
+
+    var form = document.getElementById("myForm");
+    var formData = new FormData(form);
+
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Configure the AJAX request
+    xhr.open("POST", "submit_form.php", true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          // Form submission successful, show the alert message and start cooldown
+          show.textContent = "FORMULÁŘ BYL ÚSPĚŠNĚ ODESLÁN!";
+          setTimeout(startCooldown, 2400); 
+        } else {
+          // Form submission failed, show the error message
+          show.textContent = "CHYBA PŘI ODESLÁNI FORMULÁŘE!";
+        }
+      }
+    };
+
+    // Send the form data using AJAX
+    xhr.send(formData);
+  }
+
+  
 window.onload = function() {
 
    //SHOW/HIDE - TOGGLE POSITIONS  
@@ -191,5 +264,6 @@ window.addEventListener("orientationchange", function() {
     window.orientation = 0;
   }
 });
+
 
 }

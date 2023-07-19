@@ -450,9 +450,35 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 }
+#submit_button:hover{
+  cursor: pointer;
+  transform: scale(0.95);
+}
 #submit_button img{
   width: 40px;
 }
+.alert{
+  display: none;
+  height: 110px;
+  width: 110px;
+  color: rgb(3, 7, 7);
+  background-color: grey;
+  border: 2px rgb(245, 4, 4) dotted;
+  border-radius: 10px;
+  font-size:1.2rem;
+  font-family: space;
+  padding: 5px;
+  margin: 4px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%);
+
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
 .modal_form_background{
   display: none;
   border: 1px solid rgb(0, 0, 0);
