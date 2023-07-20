@@ -1,4 +1,33 @@
-  // // SUBMIT FORM AJAX FUNCTION..TO STAY ON THE PAGE
+ //PHONE NUMBER INPUT FORMATING
+ document.addEventListener('DOMContentLoaded', function() {
+  // Select the phone input element
+  const phoneInput = document.getElementById('phoneInput');
+
+  // Add an event listener for input changes
+  phoneInput.addEventListener('input', function() {
+    // Remove all non-digit characters from the input value using regular expression
+    const formattedNumber = phoneInput.value.replace(/\D/g, '');
+
+    // Format the phone number with spaces
+    let formattedString = '';
+    for (let i = 0; i < formattedNumber.length; i++) {
+      if (i === 3 || i === 6 || i === 9) {
+        formattedString += ' ';
+      }
+      formattedString += formattedNumber[i];
+    }
+
+    // Set the formatted value back to the input field
+    phoneInput.value = formattedString;
+  });
+});
+
+ 
+ 
+ 
+ 
+ 
+ // // SUBMIT FORM AJAX FUNCTION..TO STAY ON THE PAGE
 
 
 var show;
